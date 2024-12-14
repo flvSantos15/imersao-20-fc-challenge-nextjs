@@ -1,12 +1,12 @@
 import { ChatService } from '@/services/chat.service'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   const chatService = new ChatService()
 
-  console.log('API', request)
-  chatService.createChat({ message: 'Aqui vai a mensagem.' })
+  const { message } = await request.json()
 
-  return NextResponse.json('Deu certo')
+  chatService.createChat({ message })
+
+  return NextResponse.json('Sucesso!')
 }

@@ -1,16 +1,18 @@
 'use client'
 
-export function Form() {
+import Form from 'next/form'
+
+export function CustomForm() {
   async function handleSubmit(e: FormData) {
     try {
-      const message = e.get('message') as string
+      const customMessage = e.get('message') as string
 
       await fetch(`http://localhost:3000/api/chats/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ message: customMessage })
       })
     } catch (error) {
       console.log(`Error: ${error}`)
@@ -18,7 +20,7 @@ export function Form() {
   }
 
   return (
-    <form
+    <Form
       className="flex items-center justify-between w-[24rem]"
       action={handleSubmit}
     >
@@ -35,6 +37,6 @@ export function Form() {
       >
         Criar chat
       </button>
-    </form>
+    </Form>
   )
 }

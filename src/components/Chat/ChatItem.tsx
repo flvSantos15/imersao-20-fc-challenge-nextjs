@@ -3,5 +3,9 @@ type ChatItemProps = {
 }
 
 export function ChatItem({ message }: ChatItemProps) {
-  return <p className="p-2 rounded-md bg-zinc-400">{message}</p>
+  return (
+    <div className="p-2 rounded-md bg-zinc-400 w-full">
+      <p className="">{message}</p>
+    </div>
+  )
 }

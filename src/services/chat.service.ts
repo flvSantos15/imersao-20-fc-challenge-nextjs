@@ -1,25 +1,17 @@
-import { prisma } from '@/libs/prisma'
-
-type Chat = {
-  id: number
-  message: string
-}
+import { Chat } from '@/models/Chat'
+import { createChatAction, listChatAction } from './server-actions/chat.acton'
 
 export class ChatService {
-  // Posso construir um instancia do prisma e acessar o servico dele para inserir no banco.
   async createChat(input: { message: string }): Promise<Chat> {
-    // O service vai inserir os dados no DB
-    const chat = await prisma.chat.create({
-      data: {
-        message: input.message
-      }
+    const chat = await createChatAction({
+      message: input.message
     })
 
     return chat
   }
 
   async listChat(): Promise<Chat[]> {
-    const chat = await prisma.chat.findMany({})
+    const chat = await listChatAction()
 
     return chat
   }
