@@ -1,3 +1,4 @@
+import { Chat } from '@/components/Chat'
 import { Form } from '@/components/Form'
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
       <Form />
 
       {/* lists -> listar os chats */}
-      <div>Aqui vai a lista de chats</div>
+      <Chat />
     </div>
   )
 }
